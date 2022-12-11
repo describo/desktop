@@ -1,8 +1,25 @@
+<template>
+    <button @click="loadCrate">select a folder to describe</button>
+    <button @click="saveCrate">save crate</button>
+</template>
+
 <script setup>
-import Versions from './components/Versions.vue'
+import { reactive } from "vue"
+const data = reactive({
+    crate: {}
+})
+// import Versions from './components/Versions.vue'
+
+async function loadCrate() {
+    const filePath = await window.api.loadCrate()
+    console.log(filePath)
+}
+async function saveCrate() {
+    await window.api.saveCrate({ crate: { something: "new" } })
+}
 </script>
 
-<template>
+<!-- <template>
   <Versions></Versions>
 
   <svg class="hero-logo" viewBox="0 0 900 300">
@@ -90,8 +107,8 @@ import Versions from './components/Versions.vue'
       </article>
     </div>
   </div>
-</template>
+</template> -->
 
-<style lang="less">
+<!-- <style lang="less">
 @import './assets/css/styles.less';
-</style>
+</style> -->
