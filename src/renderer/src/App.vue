@@ -1,12 +1,38 @@
 <template>
-    <button @click="loadCrate">select a folder to describe</button>
-    <button @click="saveCrate">save crate</button>
+    <div class="flex flex-col">
+        <div>
+            <el-button @click="loadCrate" type="primary">select a folder to describe</el-button>
+        </div>
+        <div>
+            <el-button @click="saveCrate">save crate</el-button>
+        </div>
+        <describo-crate-builder :crate="data.crate" :profile="{}"> </describo-crate-builder>
+    </div>
 </template>
 
 <script setup>
 import { reactive } from "vue"
 const data = reactive({
-    crate: {}
+    crate: {
+        "@context": [
+            "https://w3id.org/ro/crate/1.1/context",
+            { "@vocab": "http://schema.org/" },
+            { txc: { "@id": "http://purl.archive.org/textcommons/terms#" } },
+            { "@base": null }
+        ],
+        "@graph": [
+            {
+                "@id": "/",
+                "@type": ["Dataset"]
+            },
+            {
+                "@id": "ro-crate-metadata.json",
+                "@type": "CreativeWork",
+                conformsTo: { "@id": "https://w3id.org/ro/crate/1.1" },
+                about: { "@id": "/" }
+            }
+        ]
+    }
 })
 // import Versions from './components/Versions.vue'
 
