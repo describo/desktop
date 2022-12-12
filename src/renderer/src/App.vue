@@ -1,8 +1,10 @@
 <template>
     <div class="flex flex-col">
-        <div class="flex flex-row py-4 bg-indigo-200 p-2">
+        <div class="flex flex-row py-4 bg-indigo-200 p-2 space-x-4">
+            <div class="text-xl mr-4">Describo :: Desktop</div>
+            <div class="flex-grow"></div>
             <div v-if="!data.folder">
-                <el-button @click="loadCrate" type="primary">select a folder to describe</el-button>
+                <el-button @click="loadCrate" type="primary">Select a folder to describe</el-button>
             </div>
             <div v-else class="flex flex-row space-x-2">
                 <div class="pt-1">{{ data.folder }}</div>
@@ -12,12 +14,11 @@
                     </el-button>
                 </div>
             </div>
-            <div class="flex-grow"></div>
             <div v-if="!data.profile">
                 <el-button
                     @click="data.profileDialogVisible = !data.profileDialogVisible"
                     type="primary"
-                    >select a profile to use</el-button
+                    >Select a profile to use</el-button
                 >
             </div>
             <div v-else class="flex flex-row space-x-2">
