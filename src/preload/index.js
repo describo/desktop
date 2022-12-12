@@ -5,7 +5,7 @@ import { electronAPI } from "@electron-toolkit/preload"
 const api = {
     loadCrate: () => ipcRenderer.invoke("load:crate"),
     loadProfileFromDisk: () => ipcRenderer.invoke("load:profile:disk"),
-    loadProfileFromUrl: () => ipcRenderer.invoke("load:profile:url", { url }),
+    loadProfileFromUrl: (data) => ipcRenderer.invoke("load:profile:url", data),
     saveCrate: (crate) => ipcRenderer.send("save:crate", { crate })
 }
 
