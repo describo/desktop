@@ -33,58 +33,38 @@
             </div>
         </div>
         <div class="p-4">
-            <describo-crate-builder :crate="data.crate" :profile="data.profile" v-if="data.crate" />
+            <describo-crate-builder
+                :crate="data.crate"
+                :profile="data.profile"
+                v-if="data.crate"
+                @ready="data.loading = false"
+                v-loading="data.loading"
+            />
         </div>
     </div>
-    <el-dialog v-model="data.profileDialogVisible" title="Apply a profile" fullscreen>
-        <template #header>Select a profile to use with this crate</template>
-        <div class="flex flex-col space-y-6">
-            <div class="flex flex-row space-x-4 bg-indigo-200 p-4 rounded">
-                <div class="text-lg">Load a profile from your computer</div>
-                <div><el-button @click="loadProfileFromDisk" type="primary">Select</el-button></div>
-            </div>
-            <div class="flex-col bg-indigo-200 p-4 rounded">
-                <div class="text-lg">Load a profile from a publically accessible URL</div>
-                <div class="flex flex-row">
-                    <el-input
-                        v-model="data.url"
-                        placeholder="Please input a url"
-                        type="url"
-                        @change="data.debouncedLoadProfileFromUrl"
-                    />
-                    <el-button @click="data.debouncedLoadProfileFromUrl" type="primary">
-                        load
-                    </el-button>
-                </div>
-                <div class="text-sm text-red-700">
-                    This needs to be a valid URL : HTTP or HTTPS only
-                </div>
-            </div>
-            <div class="flex-col bg-indigo-200 p-4 rounded">
-                <div class="text-lg">
-                    Load a profile from from https://github.com/describo/profiles
-                </div>
-            </div>
-        </div>
-    </el-dialog>
+    <ProfileDialogComponent
+        :dialog-visible.sync="data.profileDialogVisible"
+        @close="data.profileDialogVisible = false"
+        @load-profile="loadProfile"
+    />
 </template>
 
 <script setup>
 import { reactive } from "vue"
-import { isURL } from "validator"
-import { debounce } from "lodash"
+import ProfileDialogComponent from "./components/ProfileDialog.component.vue"
 
 const data = reactive({
+    loading: false,
     crate: undefined,
     profile: undefined,
     folder: undefined,
     url: undefined,
-    profileDialogVisible: false,
-    debouncedLoadProfileFromUrl: debounce(loadProfileFromUrl, 200)
+    profileDialogVisible: false
 })
 
 async function loadCrate() {
     const { folder, crate } = await window.api.loadCrate()
+    data.loading = true
     data.folder = folder
     data.crate = crate
 }
@@ -92,16 +72,9 @@ function unloadCrate() {
     data.folder = undefined
     data.crate = undefined
 }
-async function loadProfileFromDisk() {
-    const { profile } = await window.api.loadProfileFromDisk()
+
+function loadProfile(profile) {
     data.profile = profile
-    data.profileDialogVisible = !data.profileDialogVisible
-}
-async function loadProfileFromUrl() {
-    if (!isURL(data.url, { protocols: ["http", "https"] })) return
-    const { profile } = await window.api.loadProfileFromUrl({ url: data.url })
-    data.profile = profile
-    data.profileDialogVisible = !data.profileDialogVisible
 }
 function unloadProfile() {
     data.profile = undefined
