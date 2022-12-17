@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: electron-app
+appId: com.github.describo-desktop
+productName: Describo Desktop
 directories:
   buildResources: build
 files:
@@ -18,7 +18,10 @@ nsis:
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
 mac:
+  category: public.app-category.productivity
+  entitlements: build/entitlements.mac.plist
   entitlementsInherit: build/entitlements.mac.plist
+  icon: build/icon.png
   extendInfo:
     - NSCameraUsageDescription: Application requests access to the device's camera.
     - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
