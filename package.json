@@ -14,11 +14,13 @@
         "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
         "start": "electron-vite preview",
         "develop": "electron-vite dev",
-        "build": "electron-vite build",
+        "build:app": "electron-vite build",
         "postinstall": "electron-builder install-app-deps",
-        "build:win": "npm run build && electron-builder --win --config",
-        "build:mac": "npm run build && electron-builder --mac --config",
-        "build:linux": "npm run build && electron-builder --linux --config"
+        "build:win": "npm run build:app && electron-builder --win --config",
+        "build:mac": "npm run build:app && electron-builder --mac --config",
+        "build:linux": "npm run build:app && electron-builder --linux --config",
+        "build": "npm run build:app",
+        "release": "npm run build:app"
     },
     "dependencies": {
         "@describo/crate-builder-component": "^0.18.0",
