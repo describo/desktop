@@ -2,44 +2,48 @@
     "name": "@describo/desktop",
     "version": "0.0.2",
     "description": "Describo desktop",
-    "main": "./out/main/index.js",
+    "main": "dist/main/index.js",
     "license": "GPL-3.0",
     "author": {
         "name": "Marco La Rosa",
         "email": "m@lr.id.au"
     },
     "homepage": "https://github.com/describo/desktop",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/describo/desktop.git"
+    },
     "scripts": {
         "format": "prettier --write .",
         "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
         "start": "electron-vite preview",
         "develop": "electron-vite dev",
         "build:app": "electron-vite build",
-        "postinstall": "electron-builder install-app-deps",
-        "build:win": "npm run build:app && electron-builder --win --config",
-        "build:mac": "npm run build:app && electron-builder --mac --config",
-        "build:linux": "npm run build:app && electron-builder --linux --config",
-        "build": "npm run build:app",
-        "release": "npm run build:app"
+        "make": "npm run build:app && electron-forge package",
+        "publish": "electron-forge publish"
     },
     "dependencies": {
         "@describo/crate-builder-component": "^0.18.0",
-        "@electron-toolkit/preload": "^1.0.2",
-        "@electron-toolkit/utils": "^1.0.2",
         "@fortawesome/fontawesome-free": "^6.2.1",
         "@fortawesome/fontawesome-svg-core": "^6.2.1",
         "autoprefixer": "^10.4.13",
         "cross-fetch": "^3.1.5",
-        "electron-updater": "^5.3.0",
         "element-plus": "^2.2.26",
         "fs-extra": "^11.1.0",
         "lodash": "^4.17.21",
-        "postcss": "^8.4.20",
         "tailwindcss": "^3.2.4",
+        "update-electron-app": "^2.0.1",
         "validator": "^13.7.0",
+        "vue": "^3.2.45",
         "vue-router": "^4.1.6"
     },
     "devDependencies": {
+        "@electron-forge/cli": "^6.0.4",
+        "@electron-forge/maker-deb": "^6.0.4",
+        "@electron-forge/maker-dmg": "^6.0.4",
+        "@electron-forge/maker-rpm": "^6.0.4",
+        "@electron-forge/maker-squirrel": "^6.0.4",
+        "@electron-forge/maker-zip": "^6.0.4",
         "@electron/notarize": "^1.2.3",
         "@optimize-lodash/rollup-plugin": "^4.0.1",
         "@rollup/plugin-commonjs": "^23.0.5",
@@ -47,14 +51,13 @@
         "@vitejs/plugin-vue": "^4.0.0",
         "@vue/eslint-config-prettier": "^7.0.0",
         "electron": "^22.0.0",
-        "electron-builder": "^23.6.0",
         "electron-vite": "^1.0.16",
         "eslint": "^8.28.0",
         "eslint-plugin-vue": "^9.7.0",
         "less": "^4.1.3",
+        "postcss": "^8.4.20",
         "prettier": "^2.7.1",
         "sass": "^1.56.2",
-        "vite": "^4.0.1",
-        "vue": "^3.2.45"
+        "vite": "^4.0.1"
     }
 }
