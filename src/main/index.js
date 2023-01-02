@@ -8,7 +8,8 @@ import {
 } from "./lib.js"
 import * as path from "path"
 import { electronApp, optimizer, is } from "@electron-toolkit/utils"
-const autoUpdater = require("electron-updater")
+import AppUpdater from "update-electron-app"
+AppUpdater({ updateInterval: "1 hour" })
 
 function createWindow() {
     // Create the browser window.
@@ -50,7 +51,6 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-    autoUpdater.checkForUpdatesAndNotify()
     ipcMain.handle("load:crate", loadCrate)
     ipcMain.handle("load:profile:disk", loadProfileFromDisk)
     ipcMain.handle("load:profile:url", loadProfileFromUrl)
