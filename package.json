@@ -44,6 +44,7 @@
         "@electron-forge/maker-rpm": "^6.0.4",
         "@electron-forge/maker-squirrel": "^6.0.4",
         "@electron-forge/maker-zip": "^6.0.4",
+        "@electron-forge/publisher-github": "^6.0.4",
         "@electron-toolkit/preload": "^1.0.3",
         "@electron-toolkit/utils": "^1.0.2",
         "@electron/notarize": "^1.2.3",
