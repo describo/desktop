@@ -1,6 +1,6 @@
 {
     "name": "@describo/desktop",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Describo desktop",
     "main": "dist/main/index.js",
     "license": "GPL-3.0",
