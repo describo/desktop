@@ -1,34 +1,23 @@
-# electron-app
+# Describo Desktop
 
-An Electron application with Vue
+An Electron application with Vue.
 
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
-## Project Setup
-
-### Install
+## Install
 
 ```bash
 $ npm install
 ```
 
-### Development
+## Development
 
 ```bash
-$ npm run dev
+$ npm run develop
 ```
 
 ### Build
 
-```bash
-# For windows
-$ npm run build:win
-
-# For macOS
-$ npm run build:mac
-
-# For Linux
-$ npm run build:linux
 ```
+npm run make
+```
+
+If on MacOS and building for MacOS you also need to sign and notarize the app. Read the instructions @ https://www.electronforge.io/guides/code-signing/code-signing-macos#osxnotarize-options and be sure to set the required env variables before running the build command.
