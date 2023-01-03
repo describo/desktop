@@ -19,7 +19,7 @@
         "start": "electron-vite preview",
         "develop": "electron-vite dev",
         "build:app": "electron-vite build",
-        "make": "npm run build:app && electron-forge make",
+        "make": "electron-forge make",
         "publish": "electron-forge publish"
     },
     "dependencies": {
