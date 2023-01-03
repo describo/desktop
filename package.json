@@ -1,5 +1,5 @@
 {
-    "name": "@describo/desktop",
+    "name": "Describo-Desktop",
     "version": "0.0.5",
     "description": "Describo desktop",
     "main": "dist/main/index.js",
