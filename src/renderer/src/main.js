@@ -6,8 +6,7 @@ config.autoReplaceSvg = "nest"
 
 import { createApp } from "vue"
 import App from "./App.vue"
-// import DescriboCrateBuilder from "@describo/crate-builder-component"
-import DescriboCrateBuilder from "/Users/mlarosa/src/describo/crate-builder-component"
+import DescriboCrateBuilder from "@describo/crate-builder-component"
 import ElementPlus from "element-plus"
 
 import { createRouter, createWebHistory } from "vue-router"
