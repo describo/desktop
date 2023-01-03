@@ -19,7 +19,7 @@
         "start": "electron-vite preview",
         "develop": "electron-vite dev",
         "build:app": "electron-vite build",
-        "make": "npm run build:app && electron-forge package",
+        "make": "npm run build:app && electron-forge make",
         "publish": "electron-forge publish"
     },
     "dependencies": {
@@ -44,6 +44,8 @@
         "@electron-forge/maker-rpm": "^6.0.4",
         "@electron-forge/maker-squirrel": "^6.0.4",
         "@electron-forge/maker-zip": "^6.0.4",
+        "@electron-toolkit/preload": "^1.0.3",
+        "@electron-toolkit/utils": "^1.0.2",
         "@electron/notarize": "^1.2.3",
         "@optimize-lodash/rollup-plugin": "^4.0.1",
         "@rollup/plugin-commonjs": "^23.0.5",
